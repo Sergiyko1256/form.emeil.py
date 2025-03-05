@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__) #dygfsdvhjgxkd,snyfjvhn
 
 @app.route("/")
 def index():
