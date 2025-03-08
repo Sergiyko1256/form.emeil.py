@@ -1,13 +1,12 @@
 import os
-import smtplib
 from flask import Flask, render_template, request
+import smtplib
+from email.message import EmailMessage
 from dotenv import load_dotenv
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 load_dotenv()
 
-app = Flask(__name__) #dygfsdvhjgxkd,snyfjvhn
+app = Flask(__name__)
 
 @app.route("/")
 def index():
@@ -24,18 +23,17 @@ def send_email():
     subject = request.form["subject"]
     message = request.form["message"]
 
-    # Створюємо email-повідомлення з кодуванням UTF-8
-    msg = MIMEMultipart()
-    msg["From"] = sender_email
-    msg["To"] = recipient_email
-    msg["Subject"] = subject
-    msg.attach(MIMEText(message, "plain", "utf-8"))
+    # Формуємо email правильно
+    email = EmailMessage()
+    email["From"] = sender_email
+    email["To"] = recipient_email
+    email["Subject"] = subject
+    email.set_content(message)
 
     try:
-        with smtplib.SMTP(smtp_server, smtp_port) as server:
-            server.starttls()
+        with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
             server.login(sender_email, sender_password)
-            server.sendmail(sender_email, recipient_email, msg.as_string())
+            server.send_message(email)
         return "Лист надіслано успішно!"
     except Exception as e:
         return f"Помилка: {str(e)}"
