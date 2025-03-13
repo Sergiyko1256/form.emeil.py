@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Форма</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Підключаємо CSS -->
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
 
     <!-- Картинка-кнопка для відкриття модального вікна -->
-    <img src="kartunka.png" alt="kartuna" id="openModalBtn" class="open-modal-image">
+    <img src="../static/programuvania.jpg" alt="kartuna" id="openModalBtn" class="open-modal-image">
 
     <!-- Модальне вікно -->
     <div id="modal" class="modal">
@@ -32,10 +33,31 @@
 
                     <button type="submit">Надіслати</button>
                 </form>
+                <!-- Повідомлення про статус -->
+                <div id="statusMessage"></div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Акордеон з питаннями та відповідями -->
+    <div class="accordion">
+        <h3 class="accordion-item">Що таке JavaScript?</h3>
+        <div class="accordion-content">
+            <p>JavaScript — це мова програмування, що використовується для створення інтерактивних веб-сайтів.</p>
+        </div>
+
+        <h3 class="accordion-item">Що таке HTML?</h3>
+        <div class="accordion-content">
+            <p>HTML — це стандартна мова розмітки для створення веб-сторінок.</p>
+        </div>
+
+        <h3 class="accordion-item">Що таке CSS?</h3>
+        <div class="accordion-content">
+            <p>CSS — це мова стилів, яка використовується для оформлення веб-сторінок.</p>
+        </div>
+    </div>
+
+    <!-- Підключаємо JS -->
+    <script src="../static/script.js"></script>
 </body>
 </html>
