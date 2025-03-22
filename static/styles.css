@@ -90,6 +90,7 @@ body {
     object-fit: cover; 
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    animation: slideInLeft 2s ease-out forwards;
 }
 
 .open-modal-image:hover {
@@ -207,6 +208,7 @@ button:hover {
     width: 100%;
     border-radius: 5px;
     margin: 5px 0;
+    transition: background-color 1.3s;
 }
 
 .accordion-item:hover {
