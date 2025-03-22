@@ -94,3 +94,27 @@ accordionItems.forEach(item => {
         }
     });
 });
+
+let lastScrollTop = 0;  // Для збереження останньої позиції скролу
+
+window.onscroll = function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Обробка хедера
+  let header = document.getElementById("header");
+  if (currentScroll > lastScrollTop) {  // Якщо скролимо вниз
+    header.style.top = "-60px";  // Ховаємо хедер
+  } else {  // Якщо скролимо вгору
+    header.style.top = "0";  // Показуємо хедер
+  }
+
+  // Обробка соціальної панелі
+  let socialPanel = document.getElementById("socialMediaPanel");
+  if (currentScroll > lastScrollTop) {  // Якщо скролимо вниз
+    socialPanel.classList.add('hidden');  // Ховаємо панель
+  } else {  // Якщо скролимо вгору
+    socialPanel.classList.remove('hidden');  // Показуємо панель
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;  // Оновлюємо останній скрол
+};
